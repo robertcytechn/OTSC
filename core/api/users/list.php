@@ -5,7 +5,7 @@ $MYSQL = new Mysql();
 
 if(isset($_POST["T"])){
     if($_POST["T"] == CYTECHNTOKEN && $SESSION->isLogged){
-        if(array_key_exists($SESSION->role_user, MIN_ROLE_1)){
+        if(in_array("Ver usuarios", $SESSION->permissions)){
             $result = $MYSQL->select("SELECT u.*, r.name_rol FROM users u INNER JOIN rols r ON u.id_rol_fk = r.id_rol where r.id_casino_fk = " . $SESSION->id_casino);
             $data = "{ \"data\": [";
             $cont = 0;
@@ -21,8 +21,14 @@ if(isset($_POST["T"])){
                 $data .= ",\"".$rows["name_rol"]."\"";
                 $estado = $rows["status_user"] == 1 ? "<span class='badge badge-success'>Activo</span>" : "<span class='badge badge-danger'>Inactivo</span>";
                 $data .= ",\"".$estado."\"";
-                $data .= ",\"<a href='javascript:void(0)' class='btn btn-primary btn-xs' onclick='modalDinamico(\\\"core/api/users/editUsuarioInfo.php\\\", \\\"".$rows["id_user"]."\\\", \\\"Editando usuario...\\\")'><i class='fa fa-pencil'></i>"
-                            ."</a> <a href='#' class='btn btn-danger btn-xs'><i class='fa fa-trash'></i></a>\"";
+                if($rows["name_rol"] == "Administrador"){
+                    $data .= ",\"<a href='javascript:void(0)' class='btn btn-primary btn-xs' onclick='modalDinamico(\\\"core/api/users/editUsuarioInfo.php\\\", \\\"".$rows["id_user"]."\\\", \\\"Editando usuario...\\\")'><i class='fa fa-pencil'></i>"
+                            ."</a> <a href='#' class='btn btn-danger btn-xs'><i class='fa fa-trash'></i></a>\"";    
+                }
+                else{
+                    $data .= ",\"<a href='javascript:void(0)' class='btn btn-primary btn-xs' onclick='modalDinamico(\\\"core/api/users/editUsuarioInfo.php\\\", \\\"".$rows["id_user"]."\\\", \\\"Editando usuario...\\\")'><i class='fa fa-pencil'></i>"
+                            ."</a> <a href='javascript:void(0)' class='btn btn-danger btn-xs' onclick='modalDinamico(\\\"core/api/users/deleteUsuario.php\\\", \\\"".$rows["id_user"]."\\\", \\\"Eliminando usuario...\\\")'><i class='fa fa-trash'></i></a>\"";    
+                }
                 $data .= "]";
                 $cont++;
             }
