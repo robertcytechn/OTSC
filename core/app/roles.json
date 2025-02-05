@@ -1,0 +1,9 @@
+{
+    "Administrador" : 1,
+    "Gerente": 2, 
+    "Sistemas": 3,
+    "Supervisor": 4,
+    "Tecnico": 5,
+    "Proveedor": 6,
+    "Observador": 7
+}

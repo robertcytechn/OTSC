@@ -1,0 +1,21 @@
+Header set Access-Control-Allow-Origin "*"
+AddDefaultCharset utf-8
+Options -Indexes
+
+php_value max_execution_time 300
+php_value upload_max_filesize 20M
+php_value post_max_size 20M
+php_value date.timeZone "America/Mexico_City"
+
+RewriteEngine On
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME}\.php -f
+RewriteRule ^(.*)\.cy$ $1.php [L,QSA]
+
+RewriteRule ^login.cy$ login.php$1 [L,QSA]
+RewriteRule ^core/api/public/loginC\.cy$ core/api/public/loginC.php [L,QSA]
+
+RewriteRule ^$ dashboard.php [L,QSA]
+
+RewriteRule ^listusuarios/$ users/listausuarios.php [L,QSA]
+

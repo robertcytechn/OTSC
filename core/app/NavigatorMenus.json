@@ -1,0 +1,76 @@
+[
+    {
+        "link":"",
+        "tittle":"Dashboard",
+        "icon":"fa-solid fa-layer-group fa-lg",
+        "color":"#234599",
+        "rol":["Administrador","Supervisor","Sistemas","Tecnico","Proveedor"],
+        "ident":"dashboarddropdown",
+        "childs":[]
+    },
+    {
+        "link":"#",
+        "tittle":"Usuarios",
+        "icon":"fa-solid fa-users fa-lg",
+        "color":"#b945d9",
+        "rol":["Administrador","Supervisor","Sistemas"],
+        "ident":"usuariosdropdown",
+        "childs":[
+            {
+                "link":"listusuarios/",
+                "tittle":"Listado",
+                "rol":["Administrador","Supervisor","Sistemas"]
+            },
+            {
+                "link":"detallesusuario/",
+                "tittle":"Informacion detallada",
+                "rol":["Administrador","Supervisor","Sistemas"]
+            }
+        ]
+    },
+    {
+        "link":"#",
+        "tittle":"Maquinas",
+        "icon":"fa-solid fa-display fa-lg",
+        "color":"#276de6",
+        "rol":["Administrador","Supervisor","Sistemas","Tecnico"],
+        "ident":"maquinasdropdown",
+        "childs":[
+            {
+                "link":"listmaquinas/",
+                "tittle":"Listado",
+                "rol":["Administrador","Supervisor","Sistemas","Tecnico"]
+            },
+            {
+                "link":"detallesmaquina/",
+                "tittle":"Informacion detallada",
+                "rol":["Administrador","Supervisor","Sistemas","Tecnico"]
+            }
+        ]
+    },
+    {
+        "link":"#",
+        "tittle":"Proveedores",
+        "icon":"fa-solid fa-truck fa-lg",
+        "color":"#2b8a3e",
+        "rol":["Administrador","Supervisor","Sistemas"],
+        "ident":"proveedoresdropdown",
+        "childs":[
+            {
+                "link":"listmodelos/",
+                "tittle":"Modelos de maquinas",
+                "rol":["Administrador","Supervisor","Sistemas"]
+            },
+            {
+                "link":"listproveedores/",
+                "tittle":"Listado",
+                "rol":["Administrador","Supervisor","Sistemas"]
+            },
+            {
+                "link":"detallesproveedor/",
+                "tittle":"Informacion detallada",
+                "rol":["Administrador","Supervisor","Sistemas"]
+            }
+        ]
+    }
+]
