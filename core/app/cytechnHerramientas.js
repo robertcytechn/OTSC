@@ -5,7 +5,7 @@ const formnormalclass = "form-normal";
 const debug = true;
 
 // validamos el dominio si no es localhost colocamos el dominio de la pagina
-const dominio = window.location.hostname == "localhost" ? "http://localhost/casino/" : "http://cytechn.ddns.net/";
+const dominio = window.location.hostname == "localhost" ? "http://localhost/casino/OTSC/" : "http://cytechn.ddns.net/";
 
 // consante de errores controlados
 const error = {

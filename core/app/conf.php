@@ -36,7 +36,7 @@ define('ERR_ROLLBACKTRANSACTION','Error en la cancelacion de la transaccion');
 
 //********************   CONSTANTES DE CONFIGURACION DE RUTAS   *******************************/
 
-define('ROOT', $_SERVER['HTTP_HOST']=='localhost' ? 'http://'.$_SERVER['HTTP_HOST'].'/casino/' : 'http://'.$_SERVER['HTTP_HOST'].'/');
+define('ROOT', $_SERVER['HTTP_HOST']=='localhost' ? 'http://'.$_SERVER['HTTP_HOST'].'/casino/OTSC/' : 'http://'.$_SERVER['HTTP_HOST'].'/');
 define('APP', ROOT.'core/app/');
 define('API', ROOT.'core/api/');
 define('COOKIE_NAME','cytechnologies');
