@@ -11,6 +11,8 @@ class sessionObj{
     public string $image_user = ""; // imagen de usuario
     public string $email_user = ""; // email de usuario
     public string $role_user = ""; // rol de usuario
+    public string $id_casino = ""; // id de casino
+    public array $permissions = []; // permisos de usuario
     protected int $id_role = 0; // id de rol de usuario
     protected int $id_user = 0; // id de usuario
     protected int $id_session = 0; // id de sesion
@@ -44,8 +46,12 @@ class sessionObj{
                     $this->role_user = $row['name_rol'];
                     $this->token_session = $row['token_session'];
                     $this->id_session = $row['id_session'];
+                    $this->id_casino = $row['id_casino_fk'];
                     $this->isLogged = true;
+                    $this->mysql->nextResult();
                     $query = "UPDATE sessions SET updated_at = NOW() WHERE (`id_session` = ".$row["id_session"].");";
+                    $permisos = $this->mysql->select("SELECT p.name_permission FROM permissions p INNER JOIN permissions_rols pr on p.id_permission = pr.id_permission_fk where pr.id_rol_fk = ".$this->id_role);
+                    $this->permissions = $permisos->fetch_all();
                     $this->mysql->query($query);
                     return true;
                 }else{

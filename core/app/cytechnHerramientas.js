@@ -51,7 +51,9 @@ class cyetchnHerramientas {
     * enviara un console.log si el debug es true, puedes cambiar el valor de debug en la constante debug
     */
     formNormal(){
-        $("."+formnormalclass).submit(function(e){
+        // Remover eventos anteriores
+        //$(document).off('submit', '.' + formnormalclass);
+        $(document).on('submit', '.' + formnormalclass, function(e){
             e.preventDefault();
             var form = $(this);
             if(form.attr("action") == undefined || form.attr("method") == undefined){
@@ -138,7 +140,6 @@ class cyetchnHerramientas {
      * <table id="tabla" data-link="url">
      */
     dataTableCytechn(){
-
         //Configuración básica del DataTable
         const basicConfig = {
             info: true,                  // Mostrar información sobre la cantidad de registros
@@ -151,10 +152,9 @@ class cyetchnHerramientas {
             order: [[0, "desc"]],       // Ordenar la primera columna en descenso por defecto
             processing: true,           // Mostrar mensaje de procesamiento
             serverSide: true,            // Configurar una fuente externa de datos (server-side)
-            responsive: true,           // Hacer la tabla responsiva
             fixedHeader: true,          // Fijar el encabezado de la tabla
             autoWidth: false,            // Ajustar automáticamente el ancho de las columnas
-            stateSave: true,             // Guardar el estado de la tabla (página, orden, búsqueda, etc.)
+            stateSave: true             // Guardar el estado de la tabla (página, orden, búsqueda, etc.)
         };
         // Configuración del lenguaje de la tabla
         const languageConfig = {
@@ -225,7 +225,7 @@ class cyetchnHerramientas {
                     columns: ':visible',
                     rows: ':visible'
                 },
-                title: 'Control Casinos by CyTechnologies',
+                title: document.title + 'Control Casinos by CyTechnologies',
                 filename: function(){
                     const d = new Date();      //Fecha actual
                     return document.title + ' ' + d.getDate() + '-' + (d.getMonth() + 1) + '-' + d.getFullYear();  //Nombre del archivo
@@ -246,14 +246,14 @@ class cyetchnHerramientas {
                     const d = new Date();      //Fecha actual
                     return document.title + ' ' + d.getDate() + '-' + (d.getMonth() + 1) + '-' + d.getFullYear();  //Nombre del archivo
                 },
-                messageTop: 'ControlCasinos by CyTechnologies'
+                messageTop: ' - ControlCasinos by CyTechnologies'
             },
             {
                 extend: 'colvis',             //Tipo de botón (ver/ocultar columnas)
                 text: '<i class="fa fa-eye"></i> Columnas',
                 titleAttr: 'Ver/Ocultar Columnas',
                 className: 'btn btn-warning',
-                columns: ':gt(0)'           //Hacer visible solo las columnas desde la primera
+                columns: ':gt(0)'           //Hacer visible solo las columnas despues de la primera
             },
             {
                 text: '<i class="fa fa-refresh"></i> Recargar',    //Texto del botón de recargar
@@ -264,8 +264,6 @@ class cyetchnHerramientas {
                 }
             }
         ];
-
-
         // Inicialización de la tabla con las configuraciones anteriores y las personalizadas de cada tabla en particular (si las hay)
         $(".datatableCytechn").each(function(){
             const tableContainer = $(this);
@@ -300,4 +298,22 @@ class cyetchnHerramientas {
             }).buttons().container().appendTo( '#'+$(tableContainer).attr('id')+'Buttons');
         });
     }
+}
+
+
+function modalDinamico(url, id, title){
+    $("#modalDinamico").modal("show");
+    $.ajax({
+        url: dominio + url,
+        type: "POST",
+        data: {id: id, T: error.CYTECHNTOKEN},
+        beforeSend: function(){
+            $("#modalDinamico .modal-title").html("Cargando...");
+            $("#modalDinamico .modal-body").html('<div class="text-center"><i class="fa fa-spinner fa-spin fa-3x"></i></div>');
+        },
+        success: function(data){
+            $("#modalDinamico .modal-title").html(title);
+            $("#modalDinamico .modal-body").html(data);
+        },
+    });
 }
