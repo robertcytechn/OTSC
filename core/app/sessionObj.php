@@ -51,7 +51,9 @@ class sessionObj{
                     $this->mysql->nextResult();
                     $query = "UPDATE sessions SET updated_at = NOW() WHERE (`id_session` = ".$row["id_session"].");";
                     $permisos = $this->mysql->select("SELECT p.name_permission FROM permissions p INNER JOIN permissions_rols pr on p.id_permission = pr.id_permission_fk where pr.id_rol_fk = ".$this->id_role);
-                    $this->permissions = $permisos->fetch_all();
+                    $this->permissions = array_map(function($item) { 
+                        return $item[0];
+                    }, $permisos->fetch_all());
                     $this->mysql->query($query);
                     return true;
                 }else{
