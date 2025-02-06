@@ -95,7 +95,9 @@ class cyetchnHerramientas {
                             }, 5000);
                         }
                         if(data.reload){
+                            setTimeout(() => {
                             window.location.reload();
+                            }, 3000);
                         }
                         if(data.modal){
                             form.closest(".modal").modal("hide");

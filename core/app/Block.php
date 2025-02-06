@@ -42,6 +42,7 @@ class block {
             <link rel=\"stylesheet\" href=\"".ROOT."purple/assets/vendors/font-awesome/css/font-awesome.min.css\">
             <link rel=\"stylesheet\" href=\"".ROOT."core/vendors/FontAwesome/css/all.min.css\">
             <link rel=\"stylesheet\" href=\"".ROOT."core/vendors/dataTables/datatables.css\">
+            <link rel=\"stylesheet\" href=\"".ROOT."core/vendors/sweetalert2.min.css\">
             <link rel=\"stylesheet\" href=\"".ROOT."purple/assets/css/style.css\">
             <link rel=\"shortcut icon\" href=\"".ROOT."core/images/logocasino.png\" />";
     }
@@ -57,6 +58,7 @@ class block {
             <script src=\"".ROOT."purple/assets/js/todolist.js\"></script>
             <script src=\"".ROOT."purple/assets/js/jquery.cookie.js\"></script>
             <script src=\"".ROOT."core/vendors/dataTables/datatables.js\"></script>
+            <script src=\"".ROOT."core/vendors/sweetalert.js\"></script>
             <script src=\"".ROOT."core/app/cytechnHerramientas.js\"></script>
             <script>
                 //cuando la pagina este lista

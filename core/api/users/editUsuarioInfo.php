@@ -15,7 +15,7 @@ if(isset($_POST["T"]) && $_POST["T"] == CYTECHNTOKEN && $SESSION->isLogged){
             // creamos un formulario con los datos del usuario a editar
             echo '<form id="formEditUser" method="post" action="core/api/users/updateUsuario.php" class="form-normal">
                     <input type="hidden" name="id" value="'.$rows["id_user"].'">
-                    <p class="text-primary">Creado: <strong>'.$rows["created_at"].'</strong>, Ultima actualizacion: <strong>'.$rows["last_name_user"].'</strong></p>
+                    <p class="text-primary">Creado: <strong>'.$rows["created_at"].'</strong>, Ultima actualizacion: <strong>'.$rows["updated_at"].'</strong></p>
                     <div class="form-group">
                         <label for="name_user">Nombre</label>
                         <input type="text" class="form-control" id="name_user" name="name_user" value="'.$rows["name_user"].'" required placeholder="Nombre de usuario">
@@ -24,6 +24,9 @@ if(isset($_POST["T"]) && $_POST["T"] == CYTECHNTOKEN && $SESSION->isLogged){
                         <label for="last_name_user">Apellido</label>
                         <input type="text" class="form-control" id="last_name_user" name="last_name_user" value="'.$rows["last_name_user"].'" required placeholder="Apellido de usuario">
                     </div>
+                    <div class="form-group">
+                        <label for="address_user">direccion</label>
+                        <input type="text" class="form-control" id="address_user" name="address_user" value="'.$rows["address_user"].'" required placeholder="Direccion de usuario">
                     <div class="form-group">
                         <label for="email_user">Email</label>
                         <input type="email" class="form-control" id="email_user" name="email_user" value="'.$rows["email_user"].'" required placeholder="Email de usuario">
